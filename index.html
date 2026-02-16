@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雨宮凪 - AMAMIYA NAGI Official Site</title>
+  <meta name="description" content="雨宮凪 (AMAMIYA NAGI) Official Website - Music, News, Discography">
+  <meta property="og:title" content="雨宮凪 - AMAMIYA NAGI Official Site">
+  <meta property="og:description" content="雨宮凪 (AMAMIYA NAGI) Official Website">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+JP:wght@100;300;400;500;700&family=Noto+Serif+JP:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Favicon (SVG inline) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>凪</text></svg>">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="loader-line"></div>
+      <span class="loader-text">AMAMIYA NAGI</span>
+      <div class="loader-line"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="header" class="header">
+    <div class="header-inner">
+      <a href="#hero" class="header-logo">
+        <span class="logo-jp">雨宮凪</span>
+        <span class="logo-en">AMAMIYA NAGI</span>
+      </a>
+      <nav class="header-nav" id="globalNav">
+        <ul class="nav-list">
+          <li><a href="#news" class="nav-link" data-section="news">News</a></li>
+          <li><a href="#music" class="nav-link" data-section="music">Music</a></li>
+          <li><a href="#discography" class="nav-link" data-section="discography">Discography</a></li>
+          <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+          <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-social">
+        <a href="https://www.youtube.com/watch?v=2P9x_Ri6mQI" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://open.spotify.com/intl-ja/artist/5x2FV4OHGoKJKMB4tpzgTT" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Spotify">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-list">
+        <li><a href="#hero" class="mobile-nav-link">Top</a></li>
+        <li><a href="#news" class="mobile-nav-link">News</a></li>
+        <li><a href="#music" class="mobile-nav-link">Music</a></li>
+        <li><a href="#discography" class="mobile-nav-link">Discography</a></li>
+        <li><a href="#about" class="mobile-nav-link">About</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <div class="mobile-nav-social">
+        <a href="https://www.youtube.com/watch?v=2P9x_Ri6mQI" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://open.spotify.com/intl-ja/artist/5x2FV4OHGoKJKMB4tpzgTT" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="hero-bg">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-gradient"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-title-wrap">
+          <h1 class="hero-title">
+            <span class="hero-title-jp" data-text="雨宮凪">雨宮凪</span>
+            <span class="hero-title-en">AMAMIYA NAGI</span>
+          </h1>
+          <p class="hero-tagline">音の雨が、静寂を満たす。</p>
+        </div>
+        <div class="hero-scroll-indicator">
+          <span>Scroll</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section section-news">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Latest Information</span>
+          <h2 class="section-title">News</h2>
+          <div class="section-bar"></div>
+        </div>
+        <ul class="news-list">
+          <li class="news-item" data-animate>
+            <span class="news-date">2026.02.15</span>
+            <span class="news-cat cat-release">Release</span>
+            <span class="news-title">3rd Single「夜明けのモノローグ」配信開始</span>
+          </li>
+          <li class="news-item" data-animate>
+            <span class="news-date">2026.01.28</span>
+            <span class="news-cat cat-live">Live</span>
+            <span class="news-title">ONEMAN LIVE 2026「凪の音」追加公演決定</span>
+          </li>
+          <li class="news-item" data-animate>
+            <span class="news-date">2026.01.10</span>
+            <span class="news-cat cat-media">Media</span>
+            <span class="news-title">音楽雑誌「SOUND WAVE」2月号 表紙＆インタビュー掲載</span>
+          </li>
+          <li class="news-item" data-animate>
+            <span class="news-date">2025.12.20</span>
+            <span class="news-cat cat-release">Release</span>
+            <span class="news-title">2nd Single「透明な夜に」Music Video公開</span>
+          </li>
+          <li class="news-item" data-animate>
+            <span class="news-date">2025.11.15</span>
+            <span class="news-cat cat-info">Info</span>
+            <span class="news-title">Official Website リニューアルオープン</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="section section-music">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Featured Music</span>
+          <h2 class="section-title">Music</h2>
+          <div class="section-bar"></div>
+        </div>
+        <div class="music-featured">
+          <div class="music-video-wrap" data-animate>
+            <div class="music-video-container">
+              <iframe
+                src="https://www.youtube.com/embed/2P9x_Ri6mQI"
+                title="雨宮凪 - Music Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div class="music-spotify-wrap" data-animate>
+            <h3 class="music-subtitle">Streaming</h3>
+            <iframe
+              style="border-radius:12px"
+              src="https://open.spotify.com/embed/artist/5x2FV4OHGoKJKMB4tpzgTT?utm_source=generator&theme=0"
+              width="100%"
+              height="352"
+              frameBorder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discography Section -->
+    <section id="discography" class="section section-discography">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Releases</span>
+          <h2 class="section-title">Discography</h2>
+          <div class="section-bar"></div>
+        </div>
+        <div class="disco-grid">
+          <div class="disco-item" data-animate>
+            <div class="disco-cover">
+              <div class="disco-cover-inner disco-cover-1">
+                <span class="disco-cover-text">3rd Single</span>
+              </div>
+              <div class="disco-overlay">
+                <span class="disco-overlay-text">Detail</span>
+              </div>
+            </div>
+            <div class="disco-info">
+              <span class="disco-date">2026.02.15</span>
+              <h3 class="disco-title">夜明けのモノローグ</h3>
+              <span class="disco-type">Digital Single</span>
+            </div>
+          </div>
+          <div class="disco-item" data-animate>
+            <div class="disco-cover">
+              <div class="disco-cover-inner disco-cover-2">
+                <span class="disco-cover-text">2nd Single</span>
+              </div>
+              <div class="disco-overlay">
+                <span class="disco-overlay-text">Detail</span>
+              </div>
+            </div>
+            <div class="disco-info">
+              <span class="disco-date">2025.12.20</span>
+              <h3 class="disco-title">透明な夜に</h3>
+              <span class="disco-type">Digital Single</span>
+            </div>
+          </div>
+          <div class="disco-item" data-animate>
+            <div class="disco-cover">
+              <div class="disco-cover-inner disco-cover-3">
+                <span class="disco-cover-text">1st Single</span>
+              </div>
+              <div class="disco-overlay">
+                <span class="disco-overlay-text">Detail</span>
+              </div>
+            </div>
+            <div class="disco-info">
+              <span class="disco-date">2025.09.01</span>
+              <h3 class="disco-title">雨音のアリア</h3>
+              <span class="disco-type">Digital Single</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Biography</span>
+          <h2 class="section-title">About</h2>
+          <div class="section-bar"></div>
+        </div>
+        <div class="about-content">
+          <div class="about-visual" data-animate>
+            <div class="about-image">
+              <div class="about-image-inner">
+                <div class="about-image-placeholder">
+                  <span class="about-image-kanji">凪</span>
+                </div>
+              </div>
+              <div class="about-image-frame"></div>
+            </div>
+          </div>
+          <div class="about-text" data-animate>
+            <h3 class="about-name">
+              <span class="about-name-jp">雨宮 凪</span>
+              <span class="about-name-en">AMAMIYA NAGI</span>
+            </h3>
+            <p class="about-description">
+              静寂と音の狭間で紡がれる、唯一無二の音楽世界。<br>
+              雨のように降り注ぐメロディと、凪のように穏やかでありながら深い感情を秘めた歌声が、聴く者の心に静かに染み渡る。
+            </p>
+            <p class="about-description">
+              繊細なピアノの旋律と、エレクトロニックサウンドの融合。<br>
+              日常の中に潜む美しさを、音楽という形で描き出す。<br>
+              一つ一つの音に込められた想いが、リスナーの記憶と共鳴し、新たな風景を生み出していく。
+            </p>
+            <div class="about-links">
+              <a href="https://www.youtube.com/watch?v=2P9x_Ri6mQI" target="_blank" rel="noopener noreferrer" class="about-link">
+                <span>YouTube</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+              <a href="https://open.spotify.com/intl-ja/artist/5x2FV4OHGoKJKMB4tpzgTT" target="_blank" rel="noopener noreferrer" class="about-link">
+                <span>Spotify</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title">Contact</h2>
+          <div class="section-bar"></div>
+        </div>
+        <div class="contact-content" data-animate>
+          <p class="contact-text">
+            お仕事のご依頼・お問い合わせは<br>下記メールアドレスよりお願いいたします。
+          </p>
+          <a href="mailto:info@amamiyanagi.com" class="contact-email">
+            <span class="contact-email-label">Mail</span>
+            <span class="contact-email-address">info@amamiyanagi.com</span>
+          </a>
+          <div class="contact-note">
+            <p>※ お返事にお時間をいただく場合がございます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-nav">
+        <a href="#hero">Top</a>
+        <a href="#news">News</a>
+        <a href="#music">Music</a>
+        <a href="#discography">Discography</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.youtube.com/watch?v=2P9x_Ri6mQI" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://open.spotify.com/intl-ja/artist/5x2FV4OHGoKJKMB4tpzgTT" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        </a>
+      </div>
+      <div class="footer-logo">
+        <span class="footer-logo-jp">雨宮凪</span>
+        <span class="footer-logo-en">AMAMIYA NAGI</span>
+      </div>
+      <p class="footer-copyright">&copy; 2026 AMAMIYA NAGI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
