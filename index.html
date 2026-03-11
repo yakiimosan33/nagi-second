@@ -26,28 +26,43 @@
 </head>
 <body>
 
+  <!-- Skip to Content -->
+  <a href="#main-content" class="skip-to-content">メインコンテンツへスキップ</a>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
   <!-- Loading Screen -->
-  <div id="loader" class="loader">
+  <div id="loader" class="loader" role="status" aria-label="ページを読み込み中">
     <div class="loader-inner">
+      <div class="loader-percentage" id="loaderPercentage" aria-hidden="true">0<span>%</span></div>
       <div class="loader-line"></div>
       <span class="loader-text">AMAMIYA NAGI</span>
       <div class="loader-line"></div>
+      <div class="loader-progress-bar">
+        <div class="loader-progress-fill" id="loaderProgressFill"></div>
+      </div>
     </div>
   </div>
+  <!-- Curtain Wipe Elements -->
+  <div class="loader-curtain-left" id="curtainLeft" aria-hidden="true"></div>
+  <div class="loader-curtain-right" id="curtainRight" aria-hidden="true"></div>
 
   <!-- Header -->
   <header id="header" class="header">
     <div class="header-inner">
-      <a href="#hero" class="header-logo">
+      <a href="#hero" class="header-logo" aria-label="雨宮凪 - トップへ戻る">
         <span class="logo-jp">雨宮凪</span>
         <span class="logo-en">AMAMIYA NAGI</span>
       </a>
-      <nav class="header-nav" id="globalNav">
+      <nav class="header-nav" id="globalNav" aria-label="メインナビゲーション">
         <ul class="nav-list">
           <li><a href="#news" class="nav-link" data-section="news">News</a></li>
           <li><a href="#music" class="nav-link" data-section="music">Music</a></li>
           <li><a href="#discography" class="nav-link" data-section="discography">Discography</a></li>
+          <li><a href="#live" class="nav-link" data-section="live">Live</a></li>
           <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+          <li><a href="#gallery" class="nav-link" data-section="gallery">Gallery</a></li>
           <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
         </ul>
       </nav>
@@ -59,7 +74,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
         </a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNavOverlay">
         <span></span>
         <span></span>
         <span></span>
@@ -68,14 +83,16 @@
   </header>
 
   <!-- Mobile Navigation Overlay -->
-  <div class="mobile-nav-overlay" id="mobileNavOverlay">
-    <nav class="mobile-nav">
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" role="dialog" aria-modal="true" aria-label="モバイルナビゲーション">
+    <nav class="mobile-nav" aria-label="モバイルナビゲーション">
       <ul class="mobile-nav-list">
         <li><a href="#hero" class="mobile-nav-link">Top</a></li>
         <li><a href="#news" class="mobile-nav-link">News</a></li>
         <li><a href="#music" class="mobile-nav-link">Music</a></li>
         <li><a href="#discography" class="mobile-nav-link">Discography</a></li>
+        <li><a href="#live" class="mobile-nav-link">Live</a></li>
         <li><a href="#about" class="mobile-nav-link">About</a></li>
+        <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
         <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
       </ul>
       <div class="mobile-nav-social">
@@ -90,11 +107,12 @@
   </div>
 
   <!-- Main Content -->
-  <main>
+  <main id="main-content">
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
       <div class="hero-bg">
+        <canvas id="rainCanvas" class="rain-canvas" aria-hidden="true"></canvas>
         <div class="hero-particles" id="particles"></div>
         <div class="hero-gradient"></div>
       </div>
@@ -106,7 +124,7 @@
           </h1>
           <p class="hero-tagline">音の雨が、静寂を満たす。</p>
         </div>
-        <div class="hero-scroll-indicator">
+        <div class="hero-scroll-indicator" aria-hidden="true">
           <span>Scroll</span>
           <div class="scroll-line"></div>
         </div>
@@ -121,29 +139,29 @@
           <h2 class="section-title">News</h2>
           <div class="section-bar"></div>
         </div>
-        <ul class="news-list">
+        <ul class="news-list" role="list">
           <li class="news-item" data-animate>
-            <span class="news-date">2026.02.15</span>
+            <time class="news-date" datetime="2026-02-15">2026.02.15</time>
             <span class="news-cat cat-release">Release</span>
             <span class="news-title">3rd Single「夜明けのモノローグ」配信開始</span>
           </li>
           <li class="news-item" data-animate>
-            <span class="news-date">2026.01.28</span>
+            <time class="news-date" datetime="2026-01-28">2026.01.28</time>
             <span class="news-cat cat-live">Live</span>
             <span class="news-title">ONEMAN LIVE 2026「凪の音」追加公演決定</span>
           </li>
           <li class="news-item" data-animate>
-            <span class="news-date">2026.01.10</span>
+            <time class="news-date" datetime="2026-01-10">2026.01.10</time>
             <span class="news-cat cat-media">Media</span>
             <span class="news-title">音楽雑誌「SOUND WAVE」2月号 表紙＆インタビュー掲載</span>
           </li>
           <li class="news-item" data-animate>
-            <span class="news-date">2025.12.20</span>
+            <time class="news-date" datetime="2025-12-20">2025.12.20</time>
             <span class="news-cat cat-release">Release</span>
             <span class="news-title">2nd Single「透明な夜に」Music Video公開</span>
           </li>
           <li class="news-item" data-animate>
-            <span class="news-date">2025.11.15</span>
+            <time class="news-date" datetime="2025-11-15">2025.11.15</time>
             <span class="news-cat cat-info">Info</span>
             <span class="news-title">Official Website リニューアルオープン</span>
           </li>
@@ -158,6 +176,7 @@
           <span class="section-label">Featured Music</span>
           <h2 class="section-title">Music</h2>
           <div class="section-bar"></div>
+          <div class="sound-visualizer" id="soundVisualizer" aria-hidden="true"></div>
         </div>
         <div class="music-featured">
           <div class="music-video-wrap" data-animate>
@@ -168,6 +187,7 @@
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
+                loading="lazy"
               ></iframe>
             </div>
           </div>
@@ -196,8 +216,8 @@
           <h2 class="section-title">Discography</h2>
           <div class="section-bar"></div>
         </div>
-        <div class="disco-grid">
-          <div class="disco-item" data-animate>
+        <div class="disco-grid" role="list">
+          <article class="disco-item" data-animate role="listitem">
             <div class="disco-cover">
               <div class="disco-cover-inner disco-cover-1">
                 <span class="disco-cover-text">3rd Single</span>
@@ -207,12 +227,12 @@
               </div>
             </div>
             <div class="disco-info">
-              <span class="disco-date">2026.02.15</span>
+              <time class="disco-date" datetime="2026-02-15">2026.02.15</time>
               <h3 class="disco-title">夜明けのモノローグ</h3>
               <span class="disco-type">Digital Single</span>
             </div>
-          </div>
-          <div class="disco-item" data-animate>
+          </article>
+          <article class="disco-item" data-animate role="listitem">
             <div class="disco-cover">
               <div class="disco-cover-inner disco-cover-2">
                 <span class="disco-cover-text">2nd Single</span>
@@ -222,12 +242,12 @@
               </div>
             </div>
             <div class="disco-info">
-              <span class="disco-date">2025.12.20</span>
+              <time class="disco-date" datetime="2025-12-20">2025.12.20</time>
               <h3 class="disco-title">透明な夜に</h3>
               <span class="disco-type">Digital Single</span>
             </div>
-          </div>
-          <div class="disco-item" data-animate>
+          </article>
+          <article class="disco-item" data-animate role="listitem">
             <div class="disco-cover">
               <div class="disco-cover-inner disco-cover-3">
                 <span class="disco-cover-text">1st Single</span>
@@ -237,9 +257,82 @@
               </div>
             </div>
             <div class="disco-info">
-              <span class="disco-date">2025.09.01</span>
+              <time class="disco-date" datetime="2025-09-01">2025.09.01</time>
               <h3 class="disco-title">雨音のアリア</h3>
               <span class="disco-type">Digital Single</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live / Schedule Section -->
+    <section id="live" class="section section-live">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Upcoming Events</span>
+          <h2 class="section-title">Live</h2>
+          <div class="section-bar"></div>
+        </div>
+        <div class="live-list">
+          <div class="live-card" data-animate>
+            <div class="live-date-block">
+              <span class="live-month">2026.04</span>
+              <span class="live-day">12</span>
+              <span class="live-weekday">Sun</span>
+            </div>
+            <div class="live-info">
+              <h3 class="live-title">ONEMAN LIVE 2026「凪の音」</h3>
+              <p class="live-venue">Zepp DiverCity (TOKYO)</p>
+              <p class="live-detail">OPEN 17:00 / START 18:00</p>
+            </div>
+            <div class="live-status">
+              <span class="live-badge badge-soldout">Sold Out</span>
+            </div>
+          </div>
+          <div class="live-card" data-animate>
+            <div class="live-date-block">
+              <span class="live-month">2026.04</span>
+              <span class="live-day">19</span>
+              <span class="live-weekday">Sun</span>
+            </div>
+            <div class="live-info">
+              <h3 class="live-title">ONEMAN LIVE 2026「凪の音」追加公演</h3>
+              <p class="live-venue">Zepp Namba (OSAKA)</p>
+              <p class="live-detail">OPEN 17:00 / START 18:00</p>
+            </div>
+            <div class="live-status">
+              <span class="live-badge badge-onsale">On Sale</span>
+            </div>
+          </div>
+          <div class="live-card" data-animate>
+            <div class="live-date-block">
+              <span class="live-month">2026.06</span>
+              <span class="live-day">07</span>
+              <span class="live-weekday">Sun</span>
+            </div>
+            <div class="live-info">
+              <h3 class="live-title">SUMMER SONIC 2026 出演</h3>
+              <p class="live-venue">ZOZOマリンスタジアム &amp; 幕張メッセ</p>
+              <p class="live-detail">出演ステージ・時間は後日発表</p>
+            </div>
+            <div class="live-status">
+              <span class="live-badge badge-coming">Coming Soon</span>
+            </div>
+          </div>
+          <div class="live-card" data-animate>
+            <div class="live-date-block">
+              <span class="live-month">2026.08</span>
+              <span class="live-day">15</span>
+              <span class="live-weekday">Sat</span>
+            </div>
+            <div class="live-info">
+              <h3 class="live-title">雨宮凪 Special Acoustic Night</h3>
+              <p class="live-venue">Billboard Live TOKYO</p>
+              <p class="live-detail">1st Stage 17:00 / 2nd Stage 20:00</p>
+            </div>
+            <div class="live-status">
+              <span class="live-badge badge-coming">Coming Soon</span>
             </div>
           </div>
         </div>
@@ -279,6 +372,41 @@
               日常の中に潜む美しさを、音楽という形で描き出す。<br>
               一つ一つの音に込められた想いが、リスナーの記憶と共鳴し、新たな風景を生み出していく。
             </p>
+            <!-- Timeline / Milestones -->
+            <div class="about-timeline">
+              <h4 class="about-timeline-heading">Milestones</h4>
+              <div class="timeline">
+                <div class="timeline-item" data-animate>
+                  <span class="timeline-year">2024</span>
+                  <div class="timeline-content">
+                    <h5 class="timeline-title">音楽活動開始</h5>
+                    <p class="timeline-desc">独学でピアノとDTMを学び、オリジナル楽曲の制作を開始。SoundCloudにて楽曲を公開し、独自の音楽世界を構築し始める。</p>
+                  </div>
+                </div>
+                <div class="timeline-item" data-animate>
+                  <span class="timeline-year">2025</span>
+                  <div class="timeline-content">
+                    <h5 class="timeline-title">1st Single「雨音のアリア」リリース</h5>
+                    <p class="timeline-desc">各種ストリーミングサービスにて配信開始。Spotifyプレイリストに選出され、リスナー数が急速に拡大。</p>
+                  </div>
+                </div>
+                <div class="timeline-item" data-animate>
+                  <span class="timeline-year">2025</span>
+                  <div class="timeline-content">
+                    <h5 class="timeline-title">メディア掲載・注目アーティストに選出</h5>
+                    <p class="timeline-desc">音楽雑誌「SOUND WAVE」にて特集記事掲載。年末の注目新人アーティストランキングにノミネート。</p>
+                  </div>
+                </div>
+                <div class="timeline-item" data-animate>
+                  <span class="timeline-year">2026</span>
+                  <div class="timeline-content">
+                    <h5 class="timeline-title">初ワンマンライブ開催決定</h5>
+                    <p class="timeline-desc">ONEMAN LIVE 2026「凪の音」をZepp DiverCityにて開催。チケットは即日完売し、追加公演も決定。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="about-links">
               <a href="https://www.youtube.com/watch?v=2P9x_Ri6mQI" target="_blank" rel="noopener noreferrer" class="about-link">
                 <span>YouTube</span>
@@ -288,6 +416,45 @@
                 <span>Spotify</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
               </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section section-gallery">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Photo Gallery</span>
+          <h2 class="section-title">Gallery</h2>
+          <div class="section-bar"></div>
+        </div>
+        <div class="gallery-scroll" data-animate>
+          <div class="gallery-track">
+            <div class="gallery-card">
+              <div class="gallery-card-img gallery-img-1"></div>
+              <span class="gallery-caption">Recording Session 2026</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-card-img gallery-img-2"></div>
+              <span class="gallery-caption">ONEMAN LIVE「凪の音」</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-card-img gallery-img-3"></div>
+              <span class="gallery-caption">Artist Photo 2025</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-card-img gallery-img-4"></div>
+              <span class="gallery-caption">MV Behind the Scenes</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-card-img gallery-img-5"></div>
+              <span class="gallery-caption">Studio Work</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-card-img gallery-img-6"></div>
+              <span class="gallery-caption">Acoustic Night</span>
             </div>
           </div>
         </div>
@@ -306,7 +473,7 @@
           <p class="contact-text">
             お仕事のご依頼・お問い合わせは<br>下記メールアドレスよりお願いいたします。
           </p>
-          <a href="mailto:info@amamiyanagi.com" class="contact-email">
+          <a href="mailto:info@amamiyanagi.com" class="contact-email" aria-label="メールでお問い合わせ: info@amamiyanagi.com">
             <span class="contact-email-label">Mail</span>
             <span class="contact-email-address">info@amamiyanagi.com</span>
           </a>
@@ -317,19 +484,49 @@
       </div>
     </section>
 
+    <!-- Follow / Newsletter Section -->
+    <section class="section section-follow">
+      <div class="container">
+        <div class="follow-content" data-animate>
+          <p class="follow-tagline">最新情報をお届け</p>
+          <h2 class="follow-title">Follow</h2>
+          <p class="follow-text">公式SNSをフォローして、最新のリリースやライブ情報をチェック。</p>
+          <div class="follow-buttons">
+            <a href="https://www.youtube.com/watch?v=2P9x_Ri6mQI" target="_blank" rel="noopener noreferrer" class="follow-btn follow-btn-youtube">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span>YouTube</span>
+            </a>
+            <a href="https://open.spotify.com/intl-ja/artist/5x2FV4OHGoKJKMB4tpzgTT" target="_blank" rel="noopener noreferrer" class="follow-btn follow-btn-spotify">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              <span>Spotify</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="ページの先頭へ戻る" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="footer-inner">
-      <div class="footer-nav">
+      <nav class="footer-nav" aria-label="フッターナビゲーション">
         <a href="#hero">Top</a>
         <a href="#news">News</a>
         <a href="#music">Music</a>
         <a href="#discography">Discography</a>
+        <a href="#live">Live</a>
         <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-      </div>
+      </nav>
       <div class="footer-social">
         <a href="https://www.youtube.com/watch?v=2P9x_Ri6mQI" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
           <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
